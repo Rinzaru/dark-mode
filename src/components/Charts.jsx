@@ -4,11 +4,18 @@ import Chart from "./Chart";
 const Charts = ({ coinData }) => {
   return (
     <div className="charts">
-      {coinData.map(coin => (
+      {coinData.map((coin) => (
         <div className="chart__container" key={coin.name}>
           <h2 className="coin__title">{coin.name}</h2>
           <h4 className="coin__symbol">{coin.symbol}</h4>
-          <div className="coin__logo">
+          <div
+            className="coin__logo"
+            onClick={() => {
+              alert(
+                `Name: ${coin.name}, Current Price: ${coin.current_price}, Last Updated: ${coin.last_updated}`
+              );
+            }}
+          >
             <img src={coin.image} height="40" alt={coin.name} />
           </div>
           <Chart sparklineData={coin.sparkline_in_7d.price} />
